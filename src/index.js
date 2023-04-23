@@ -39,9 +39,13 @@ function formatDate(timestamp) {
 
 // ---------------display current location weather------------------
 function displayCurrentWeather(response) {
+  // console.log(response);
   document.querySelector("#city-title").innerHTML = response.data.name;
 
   celsiusTemp = response.data.main.temp;
+  feelsLikeTemp = response.data.main.feels_like;
+  maxTemp = response.data.main.temp_max;
+  minTemp = response.data.main.temp_min;
 
   document.querySelector("#current-temp").innerHTML = Math.round(celsiusTemp);
 
@@ -125,11 +129,21 @@ function cityTitle(event) {
 function displayFarenHietTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#current-temp");
-  //remove the active class fron cel
+  //remove the active class from cel
   celsiusLink.classList.remove("active");
   farenhietLink.classList.add("active");
   farenhietTemp = (celsiusTemp * 9) / 5 + 32;
   tempElement.innerHTML = Math.round(farenhietTemp);
+
+  document.querySelector("#maxTemp").innerHTML = Math.round(
+    (maxTemp * 9) / 5 + 32
+  );
+  document.querySelector("#minTemp").innerHTML = Math.round(
+    (minTemp * 9) / 5 + 32
+  );
+  document.querySelector("#feelsLike").innerHTML = Math.round(
+    (feelsLikeTemp * 9) / 5 + 32
+  );
 }
 
 function displayCelsiusTemp(event) {
@@ -138,10 +152,16 @@ function displayCelsiusTemp(event) {
   farenhietLink.classList.remove("active");
   let tempElement = document.querySelector("#current-temp");
   tempElement.innerHTML = Math.round(celsiusTemp);
+  document.querySelector("#maxTemp").innerHTML = Math.round(maxTemp);
+  document.querySelector("#minTemp").innerHTML = Math.round(minTemp);
+  document.querySelector("#feelsLike").innerHTML = Math.round(feelsLikeTemp);
 }
 //-----------------------------------------------------
 //---set globale variable----
 let celsiusTemp = null;
+let feelsLikeTemp = null;
+let maxTemp = null;
+let minTemp = null;
 
 //---show default city values--
 searchCity("San Diego");
