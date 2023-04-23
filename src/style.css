@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+.searchBox {
+  position: relative;
+  top: 10px;
+  left: 70px;
+  border-radius: 6px;
+}
+input[type="search"] {
+  width: 300px;
+  border: 1px solid lightgray;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+input[type="submit"] {
+  box-shadow: none !important;
+}
+.searchButton {
+  border-style: none;
+  background-color: white;
+  position: relative;
+  left: 385px;
+  top: -20px;
+  padding: 0;
+  margin: 0;
+  width: 20px;
+}
+#currentLocation {
+  border-style: none;
+  background-color: white;
+  position: relative;
+  left: 415px;
+  padding: 0;
+  margin: 0;
+  top: -45px;
+}
+
+.title {
+  font-size: 24px;
+  position: relative;
+  left: 10px;
+  top: 2px;
+  font-weight: bold;
+}
+.dateTime {
+  font-size: 20px;
+  position: relative;
+  left: 100px;
+  top: 5px;
+}
+
+.unit {
+  font-size: 14px;
+  font-weight: bold;
+  position: relative;
+  top: -140px;
+  left: 295px;
+  text-align: center;
+  margin-left: 2px;
+}
+
+.tempreture {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  position: relative;
+  line-height: 0.8px;
+  top: -130px;
+  left: 300px;
+}
+#celsius-link {
+  text-decoration: none;
+}
+#fahrenheit-link {
+  text-decoration: none;
+}
+#celsius-link:hover {
+  text-decoration: underline;
+  color: darkblue;
+}
+#fahrenheit-link:hover {
+  text-decoration: underline;
+  color: darkblue;
+}
+
+.main {
+  border: 1px solid lightgray;
+  height: 90px;
+  width: 370px;
+  left: 118px;
+  top: -32px;
+  margin: 20px;
+  position: relative;
+
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+.details {
+  text-align: center;
+  border: 1px solid lightgray;
+  padding: 0px;
+  margin: 6px 6px;
+  width: 120px;
+  position: fixed;
+  top: 58px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+.row {
+  font-size: 16px;
+  text-align: center;
+  position: relative;
+  left: 132px;
+  top: -40px;
+  padding: 0 130px 0 10px;
+}
+.col-2 {
+  text-align: center;
+  border: 1px solid lightgray;
+  padding: 4px;
+  padding: 12px 12px;
+  margin: 5px 5px;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+.weather-app {
+  width: 520px;
+  height: 340px;
+  border: 2px solid lightgray;
+  border-radius: 6px;
+  margin: 30px auto;
+}
+
+#main-icon {
+  position: relative;
+  left: 280px;
+  top: -110px;
+  width: 80px;
+}
+.sun-icon {
+  color: orange;
+}
+.cloud-icon {
+  color: lightblue;
+}
+
+.bolt-icon {
+  color: gray;
+}
+.smug-icon {
+  color: darkslategray;
+}
+
+.opecsourceLink {
+  position: relative;
+  font-size: 14px;
+  top: -32px;
+}
