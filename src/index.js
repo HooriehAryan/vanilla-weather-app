@@ -1,7 +1,22 @@
 // -----------------------dispaly date & time-------------------
-let now = new Date();
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours.toString().length === 1) {
+    hours = "0" + hours;
+  }
+  let minutes = date.getMinutes();
+  if (minutes.toString().length === 1) {
+    minutes = "0" + minutes;
+  }
+  //--today--
+  let today = date.getDate();
 
-function formatDate(currentDate) {
+  //-day of the week--
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+
+  //--months--
   let months = [
     "Jan",
     "Feb",
@@ -16,31 +31,14 @@ function formatDate(currentDate) {
     "Nov",
     "Dec",
   ];
-  let month = months[now.getMonth()];
+  let month = months[date.getMonth()];
 
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let day = days[now.getDay()];
-  let date = now.getDate();
-
-  let formattedDate = ` ${day}, ${date} ${month} `;
-  return formattedDate;
+  //--result--
+  return `${day}, ${today} ${month} ${hours}:${minutes}`;
 }
-
-let newDate = formatDate(now);
-let minute = now.getMinutes();
-if (minute.toString().length === 1) {
-  minute = "0" + minute;
-}
-let hour = now.getHours();
-if (hour.toString().length === 1) {
-  hour = "0" + hour;
-}
-let NewDateTime = document.querySelector("#date-time");
-NewDateTime.innerHTML = `${newDate} ${hour}:${minute}`;
 
 // ---------------display current location weather------------------
 function displayCurrentWeather(response) {
-  //----short form coding
   document.querySelector("#city-title").innerHTML = response.data.name;
 
   document.querySelector("#current-temp").innerHTML = Math.round(
@@ -64,6 +62,13 @@ function displayCurrentWeather(response) {
     response.data.main.temp_min
   );
 
+  //--calculate data&time--
+  //convert timestamp to ms
+
+  document.querySelector("#date-time").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
+
   //--add relevant main icon--
   let iconElement = document.querySelector("#main-icon");
 
@@ -76,37 +81,6 @@ function displayCurrentWeather(response) {
   document.querySelector("#search-input").value = "";
 
   console.log(response);
-
-  //   let temperatureC = Math.round(response.data.main.temp);
-  //   let showTemp = document.querySelector("#current-temp");
-  //   showTemp.innerHTML = `${temperatureC}`;
-
-  //   let description = response.data.weather[0].main;
-  //   let showDes = document.querySelector("#description");
-  //   showDes.innerHTML = `${description}`;
-
-  //   let humidity = response.data.main.humidity;
-  //   let showHumidity = document.querySelector("#humidity");
-  //   showHumidity.innerHTML = `${humidity}`;
-
-  //   let windSpeed = Math.round(response.data.wind.speed);
-  //   let showWind = document.querySelector("#windSpeed");
-  //   showWind.innerHTML = `${windSpeed}`;
-
-  //   let feelsLike = Math.round(response.data.main.feels_like);
-  //   let showFeels = document.querySelector("#feelsLike");
-  //   showFeels.innerHTML = `${feelsLike}`;
-
-  //   let tempMax = Math.round(response.data.main.temp_max);
-  //   let showTempMax = document.querySelector("#maxTemp");
-  //   showTempMax.innerHTML = `${tempMax}`;
-
-  //   let tempMin = Math.round(response.data.main.temp_min);
-  //   let showTempMin = document.querySelector("#minTemp");
-  //   showTempMin.innerHTML = `${tempMin}`;
-
-  //   let cityTitle = document.querySelector("#city-title");
-  //   cityTitle.innerHTML = `${response.data.name}`;
 }
 
 //----search current location with lat and long-------
