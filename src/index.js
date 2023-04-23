@@ -41,9 +41,10 @@ function formatDate(timestamp) {
 function displayCurrentWeather(response) {
   document.querySelector("#city-title").innerHTML = response.data.name;
 
-  document.querySelector("#current-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  celsiusTemp = response.data.main.temp;
+
+  document.querySelector("#current-temp").innerHTML = Math.round(celsiusTemp);
+
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
 
@@ -69,7 +70,7 @@ function displayCurrentWeather(response) {
     response.data.dt * 1000
   );
 
-  //--add relevant main icon--
+  //--add relevant main weather icon--
   let iconElement = document.querySelector("#main-icon");
 
   iconElement.setAttribute(
@@ -83,7 +84,7 @@ function displayCurrentWeather(response) {
   console.log(response);
 }
 
-//----search current location with lat and long-------
+//----search current location with latitude and longitude-------
 function showPosition(position) {
   // console.log(position);
   // console.log(position.coords.latitude);
@@ -102,7 +103,7 @@ function getCurrentPosition(event) {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
-// -----search city with it's name-------
+// -------search engine: search city with it's name---------
 function searchCity(city) {
   let key = "cff65853d7c461490797b173c0cc1233";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
@@ -120,14 +121,43 @@ function cityTitle(event) {
     searchCity(newCity);
   }
 }
+//---------------convert tempreture-------------------
+function displayFarenHietTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#current-temp");
+  //remove the active class fron cel
+  celsiusLink.classList.remove("active");
+  farenhietLink.classList.add("active");
+  farenhietTemp = (celsiusTemp * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(farenhietTemp);
+}
 
-//-----show default city values-------
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  farenhietLink.classList.remove("active");
+  let tempElement = document.querySelector("#current-temp");
+  tempElement.innerHTML = Math.round(celsiusTemp);
+}
+//-----------------------------------------------------
+//---set globale variable----
+let celsiusTemp = null;
+
+//---show default city values--
 searchCity("San Diego");
 
-//-----click search button----
+//---click search button--
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", cityTitle);
 
-//-----click currentLocation button----
+//---click currentLocation button--
 let currentButton = document.querySelector("#currentLocation");
 currentButton.addEventListener("click", getCurrentPosition);
+
+//---click fahrenheit link--
+let farenhietLink = document.querySelector("#fahrenheit-link");
+farenhietLink.addEventListener("click", displayFarenHietTemp);
+
+//---click celsius link--
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
