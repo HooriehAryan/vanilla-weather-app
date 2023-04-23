@@ -39,7 +39,6 @@ function formatDate(timestamp) {
 
 // ---------------display current location weather------------------
 function displayCurrentWeather(response) {
-  // console.log(response);
   document.querySelector("#city-title").innerHTML = response.data.name;
 
   celsiusTemp = response.data.main.temp;
@@ -90,9 +89,6 @@ function displayCurrentWeather(response) {
 
 //----search current location with latitude and longitude-------
 function showPosition(position) {
-  // console.log(position);
-  // console.log(position.coords.latitude);
-  // console.log(position.coords.longitude);
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
   let key = "cff65853d7c461490797b173c0cc1233";

@@ -72,21 +72,21 @@ input[type="submit"] {
   top: -130px;
   left: 300px;
 }
-/* #celsius-link {
+.temp .active {
+  color: black;
+  cursor: text;
   text-decoration: none;
 }
+.temp .active:hover {
+  text-decoration: none;
+}
+
 #fahrenheit-link {
   text-decoration: none;
 }
-#celsius-link:hover {
-  text-decoration: underline;
-  color: darkblue;
+#celsius-link {
+  text-decoration: none;
 }
-#fahrenheit-link:hover {
-  text-decoration: underline;
-  color: darkblue;
-} */
-
 .main {
   border: 1px solid lightgray;
   height: 90px;
@@ -163,20 +163,4 @@ input[type="submit"] {
   position: relative;
   font-size: 14px;
   top: -32px;
-}
-
-.temp .active {
-  color: black;
-  cursor: text;
-  text-decoration: none;
-}
-.temp .active:hover {
-  text-decoration: none;
-}
-
-#fahrenheit-link {
-  text-decoration: none;
-}
-#celsius-link {
-  text-decoration: none;
 }
